@@ -1,0 +1,96 @@
+########################################################################
+### This calculates the pH using the m-cresol spec method: Dickson SOP6a
+### NOTE: you MUST use the pHinsi function from seacarb to calculate the in situ pH during sample collection.
+### Created by Dr. Nyssa Silbiger
+### Edited on 1/4/2020
+#########################################################################
+
+## create a folder for your day of sampling (foldername below) and put your plate.csv files in there. All your data will be exported to that folder
+
+#libraries
+library(tidyverse)
+library(seacarb)
+
+## File names -------------------
+foldername<-'Panos_test' # folder of the day
+filename<-'Plate_1_6-20_Day_Plate.csv'
+platename<-'Plate_1_6-20_Day' # this will be the name of your file
+
+## Temp and Salinity ----------
+#Temeperataure pH was run at IN THE LAB
+Temperature<-25
+Salinity<-35 # note if you have a range of salinities then import a file with all salinities and modify script below (add a column with sample IDs and left_join with AllData Df)
+
+# Change slope and intercept with each new batch of dye --------------
+# Dye created by: Deme Panos
+# Date created: XXXX
+dye_intercept<-17.228
+dye_slope<--0.5959
+
+# DONT CHANGE ANYTHING BELOW HERE ----------------------------------
+
+### format the 96 well plate data ################
+#read in the rows w/o the dye
+NoDye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, skip = 2)
+# make the rownames a column
+NoDye$Rows<-rownames(NoDye)
+
+## read in the rows with the dye
+Dye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, skip = 23)
+Dye$Rows<-rownames(Dye)
+
+## Pull out each of the wavelengths to make own column
+#730 No Dye
+NoDye_730<-NoDye %>%
+  select(Rows,X1:X12)%>%
+  pivot_longer(cols = X1:X12, values_to =  "NoDye_730", names_to = "Column")
+
+#578 No Dye
+NoDye_578<-NoDye %>%
+  select(Rows,X1.1:X12.1)%>% # pull out the 578 columns
+  pivot_longer(cols = X1.1:X12.1, values_to =  "NoDye_578", names_to = "Column") %>%
+  separate(col = Column, extra = "drop", into = 'Column') # remove the .1
+
+#434 No Dye
+NoDye_434<-NoDye %>%
+  select(Rows,X1.2:X12.2)%>% # pull out the 578 columns
+  pivot_longer(cols = X1.2:X12.2, values_to =  "NoDye_434", names_to = "Column") %>%
+  separate(col = Column, extra = "drop", into = 'Column') # remove the .2
+
+## with dye
+#730 Dye
+Dye_730<-Dye %>%
+  select(Rows,X1:X12)%>%
+  pivot_longer(cols = X1:X12, values_to =  "Dye_730", names_to = "Column")
+
+#578 Dye
+Dye_578<-Dye %>%
+  select(Rows,X1.1:X12.1)%>% # pull out the 578 columns
+  pivot_longer(cols = X1.1:X12.1, values_to =  "Dye_578", names_to = "Column") %>%
+  separate(col = Column, extra = "drop", into = 'Column') # remove the .1
+
+#434 Dye
+Dye_434<-Dye %>%
+  select(Rows,X1.2:X12.2)%>% # pull out the 578 columns
+  pivot_longer(cols = X1.2:X12.2, values_to =  "Dye_434", names_to = "Column") %>%
+  separate(col = Column, extra = "drop", into = 'Column') # remove the .2
+
+## bring everything to one dataframe (reduce allows me to use the left_join function multiple times at once)
+AllData<-Reduce(function(...) left_join(...), list(NoDye_730,NoDye_578,NoDye_434,Dye_730,Dye_578,Dye_434))
+
+### Run pH Analysis ##################
+pHData<-AllData %>%
+  mutate(A1_A2 = (Dye_578-NoDye_578-(Dye_730-NoDye_730))/(Dye_434-NoDye_434-(Dye_730-NoDye_730)), #A1/A2
+         A1_A2_corr = A1_A2+(dye_intercept+(dye_slope*A1_A2))*0.005,  #correct for the dye
+         pH_in_lab = as.numeric(pHspec(S = rep(Salinity,96), T = rep(Temperature,96), R = A1_A2_corr)),# calculate the pH
+         pHtris = as.numeric(tris(S= rep(Salinity,96),T=rep(Temperature,96))), ## calculate pH of tris,
+         pHtris_error = abs(((pHtris-pH_in_lab)/pHtris)*100), # calculate error from tris
+         daterun = Sys.Date())
+
+### Export the data
+## all the info
+write.table(pHData,paste0("Data/",foldername,"/pHoutputFull",platename,".csv"),sep=",", row.names=FALSE)
+## only the pH data (REPLACE WITH SAMPLE ID)
+pHData %>% 
+  select(Rows, Column, pH_in_lab)%>% 
+  write.table(.,paste0("Data/",foldername,"/pH_simple",platename,".csv"),sep=",", row.names=FALSE)
