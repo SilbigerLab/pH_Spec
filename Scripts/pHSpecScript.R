@@ -13,7 +13,8 @@ library(seacarb)
 
 ## File names -------------------
 foldername<-'Panos_test' # folder of the day
-filename<-'Plate_1_6-20_Day_Plate.csv'
+filename<-'Plate_1_6-20_Day_Plate.csv' # data
+sampleID<-'Plate1_6-20_Day_Template.csv' # template of sample IDs
 platename<-'Plate_1_6-20_Day' # this will be the name of your file
 
 ## Temp and Salinity ----------
@@ -28,6 +29,11 @@ dye_intercept<-17.228
 dye_slope<--0.5959
 
 # DONT CHANGE ANYTHING BELOW HERE ----------------------------------
+
+# Read in the Sample IDs
+sampleIDNames<-read.csv(paste0('Data/',foldername,'/',sampleID))
+sampleIDNames<-sampleIDNames %>%
+  select(Well.Location, Sample.Name) # pull out the location and the IDs
 
 ### format the 96 well plate data ################
 #read in the rows w/o the dye
@@ -78,6 +84,14 @@ Dye_434<-Dye %>%
 ## bring everything to one dataframe (reduce allows me to use the left_join function multiple times at once)
 AllData<-Reduce(function(...) left_join(...), list(NoDye_730,NoDye_578,NoDye_434,Dye_730,Dye_578,Dye_434))
 
+#df1$col1 <- gsub("(\\d)+", "0\\1", df1$col1)
+#df1$col1
+# remove the X in the column name and add a 0 in front of single digits to keep the well name similar to how the instrument exports
+AllData<-AllData %>%
+  mutate(Column = as.numeric(str_remove(AllData$Column, pattern = "X")))%>% # remove the X
+  mutate(Column = ifelse(Column<10, gsub("(\\d)+", "0\\1", Column),Column))%>% # only add a 0 in front of 1-9
+  mutate(Well.Location = paste0(Rows,Column)) # paste with row name
+
 ### Run pH Analysis ##################
 pHData<-AllData %>%
   mutate(A1_A2 = (Dye_578-NoDye_578-(Dye_730-NoDye_730))/(Dye_434-NoDye_434-(Dye_730-NoDye_730)), #A1/A2
@@ -85,12 +99,15 @@ pHData<-AllData %>%
          pH_in_lab = as.numeric(pHspec(S = rep(Salinity,96), T = rep(Temperature,96), R = A1_A2_corr)),# calculate the pH
          pHtris = as.numeric(tris(S= rep(Salinity,96),T=rep(Temperature,96))), ## calculate pH of tris,
          pHtris_error = abs(((pHtris-pH_in_lab)/pHtris)*100), # calculate error from tris
-         daterun = Sys.Date())
+         daterun = Sys.Date()) %>%
+  left_join(sampleIDNames)
 
 ### Export the data
 ## all the info
 write.table(pHData,paste0("Data/",foldername,"/pHoutputFull",platename,".csv"),sep=",", row.names=FALSE)
 ## only the pH data (REPLACE WITH SAMPLE ID)
 pHData %>% 
-  select(Rows, Column, pH_in_lab)%>% 
+  select(Sample.Name, pH_in_lab)%>% 
+  group_by(Sample.Name)%>%
+  summarise(pHmean = mean(pH_in_lab, na.rm=TRUE), SE = sd(pH_in_lab, na.rm=TRUE)/n())%>%
   write.table(.,paste0("Data/",foldername,"/pH_simple",platename,".csv"),sep=",", row.names=FALSE)
