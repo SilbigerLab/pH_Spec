@@ -1,6 +1,7 @@
 ########################################################################
 ### This calculates the pH using the m-cresol spec method: Dickson SOP6a
-### NOTE: you MUST use the pHinsi function from seacarb to calculate the in situ pH during sample collection.
+### NOTE: you MUST use the pHinsi function from seacarb to calculate the in situ pH at in situ temperature during sample collection.
+### This script only exports the pH in the lab.
 ### Created by Dr. Nyssa Silbiger
 ### Edited on 1/4/2020
 #########################################################################
@@ -84,8 +85,6 @@ Dye_434<-Dye %>%
 ## bring everything to one dataframe (reduce allows me to use the left_join function multiple times at once)
 AllData<-Reduce(function(...) left_join(...), list(NoDye_730,NoDye_578,NoDye_434,Dye_730,Dye_578,Dye_434))
 
-#df1$col1 <- gsub("(\\d)+", "0\\1", df1$col1)
-#df1$col1
 # remove the X in the column name and add a 0 in front of single digits to keep the well name similar to how the instrument exports
 AllData<-AllData %>%
   mutate(Column = as.numeric(str_remove(AllData$Column, pattern = "X")))%>% # remove the X
@@ -105,7 +104,7 @@ pHData<-AllData %>%
 ### Export the data
 ## all the info
 write.table(pHData,paste0("Data/",foldername,"/pHoutputFull",platename,".csv"),sep=",", row.names=FALSE)
-## only the pH data (REPLACE WITH SAMPLE ID)
+## only the pH data with means and SE of triplicates
 pHData %>% 
   select(Sample.Name, pH_in_lab)%>% 
   group_by(Sample.Name)%>%
