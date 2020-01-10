@@ -23,6 +23,11 @@ platename<-'Katie' # this will be the name of your file
 Temperature<-25
 Salinity<-35 # note if you have a range of salinities then import a file with all salinities and modify script below (add a column with sample IDs and left_join with AllData Df)
 
+### Temperature in situ (either in the aquarium or in the field)#####
+## If you want to calculate insitu pH then enter TRUE in the statement below and the filename with the temperature files, if not enter FALSE
+CalculateInSitu<-TRUE
+TempInSituFileName<-'TempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
+
 # Change slope and intercept with each new batch of dye --------------
 # Dye created by: Deme Panos
 # Date created: XXXX
@@ -30,6 +35,12 @@ dye_intercept<-17.228
 dye_slope<--0.5959
 
 # DONT CHANGE ANYTHING BELOW HERE ----------------------------------
+
+# read in the in situ temp data if true
+if(CalculateInSitu==TRUE){
+  TempInSitu<-read.csv(paste0('Data/',foldername,'/',TempInSituFileName))
+}
+
 
 # Read in the Sample IDs
 sampleIDNames<-read.csv(paste0('Data/',foldername,'/',sampleID))
@@ -92,6 +103,7 @@ AllData<-AllData %>%
   mutate(Well.Location = paste0(Rows,Column)) # paste with row name
 
 ### Run pH Analysis ##################
+
 pHData<-AllData %>%
   mutate(A1_A2 = (Dye_578-NoDye_578-(Dye_730-NoDye_730))/(Dye_434-NoDye_434-(Dye_730-NoDye_730)), #A1/A2
          A1_A2_corr = A1_A2+(dye_intercept+(dye_slope*A1_A2))*0.005,  #correct for the dye
@@ -99,14 +111,33 @@ pHData<-AllData %>%
          pHtris = as.numeric(tris(S= rep(Salinity,96),T=rep(Temperature,96))), ## calculate pH of tris,
          pHtris_error = abs(((pHtris-pH_in_lab)/pHtris)*100), # calculate error from tris
          daterun = Sys.Date()) %>%
-  left_join(sampleIDNames)
+  left_join(sampleIDNames)%>% # join with the sampleIDs
+  left_join(TempInSitu) %>% # join with the temperature data
+  drop_na() # remove the empty wells
+
+# run this block if calculating in situ pH
+  if(CalculateInSitu==TRUE){
+    pHData<-pHData %>%
+      mutate(pHinsitu = pHinsi(pH = pH_in_lab, Tinsi = TempInSitu, Tlab = Temperature, pHscale = "T")) # calculate insitu pH
+  }
 
 ### Export the data
 ## all the info
 write.table(pHData,paste0("Data/",foldername,"/pHoutputFull",platename,".csv"),sep=",", row.names=FALSE)
+
 ## only the pH data with means and SE of triplicates
-pHData %>% 
-  select(Sample.Name, pH_in_lab)%>% 
+if(CalculateInSitu==TRUE){
+  pHData %>% 
+  select(Sample.Name, pHinsitu)%>% 
   group_by(Sample.Name)%>%
-  summarise(pHmean = mean(pH_in_lab, na.rm=TRUE), SE = sd(pH_in_lab, na.rm=TRUE)/n())%>%
+  summarise(pHmean = mean(pHinsitu, na.rm=TRUE), SE = sd(pHinsitu, na.rm=TRUE)/n())%>%
   write.table(.,paste0("Data/",foldername,"/pH_simple",platename,".csv"),sep=",", row.names=FALSE)
+}
+
+if(CalculateInSitu==FALSE){
+  pHData %>% 
+    select(Sample.Name, pH_in_lab)%>% 
+    group_by(Sample.Name)%>%
+    summarise(pHmean = mean(pH_in_lab, na.rm=TRUE), SE = sd(pH_in_lab, na.rm=TRUE)/n())%>%
+    write.table(.,paste0("Data/",foldername,"/pH_simple",platename,".csv"),sep=",", row.names=FALSE)
+}
