@@ -49,12 +49,12 @@ sampleIDNames<-sampleIDNames %>%
 
 ### format the 96 well plate data ################
 #read in the rows w/o the dye
-NoDye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, skip = 2)
+NoDye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, fileEncoding="latin1", skip = 2)
 # make the rownames a column
 NoDye$Rows<-rownames(NoDye)
 
 ## read in the rows with the dye
-Dye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, skip = 14)
+Dye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, fileEncoding="latin1", skip = 14)
 Dye$Rows<-rownames(Dye)
 
 ## Pull out each of the wavelengths to make own column
