@@ -3,7 +3,7 @@
 ### NOTE: you MUST use the pHinsi function from seacarb to calculate the in situ pH at in situ temperature during sample collection.
 ### This script only exports the pH in the lab.
 ### Created by Dr. Nyssa Silbiger
-### Edited on 1/4/2020
+### Edited on 1/9/2020
 #########################################################################
 
 ## create a folder for your day of sampling (foldername below) and put your plate.csv files in there. All your data will be exported to that folder
@@ -13,10 +13,10 @@ library(tidyverse)
 library(seacarb)
 
 ## File names -------------------
-foldername<-'Panos_test' # folder of the day
-filename<-'Plate_1_6-20_Day_Plate.csv' # data
-sampleID<-'Plate1_6-20_Day_Template.csv' # template of sample IDs
-platename<-'Plate_1_6-20_Day' # this will be the name of your file
+foldername<-'Katie 0109202' # folder of the day
+filename<-'Preexperimentbaseline_Plate.csv' # data
+sampleID<-'Plate1_1-9-2020_Template.csv' # template of sample IDs
+platename<-'Katie' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
@@ -43,7 +43,7 @@ NoDye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","
 NoDye$Rows<-rownames(NoDye)
 
 ## read in the rows with the dye
-Dye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, skip = 23)
+Dye<-read.csv(paste0('Data/',foldername,'/',filename), row.names = c("A","B","C","D","E","F","G","H"),nrows = 8, skip = 14)
 Dye$Rows<-rownames(Dye)
 
 ## Pull out each of the wavelengths to make own column
