@@ -14,9 +14,9 @@ library(seacarb)
 
 ## File names -------------------
 foldername<-'Katie 0109202' # folder of the day
-filename<-'Preexperimentbaseline_Plate.csv' # data
-sampleID<-'Plate1_1-9-2020_Template.csv' # template of sample IDs
-platename<-'Katie' # this will be the name of your file
+filename<-'MCresolPlate_1-10-2020.csv' # data
+sampleID<-'Plate11_1-10-2020_Template.csv' # template of sample IDs
+platename<-'KatieMcresol' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
@@ -141,3 +141,4 @@ if(CalculateInSitu==FALSE){
     summarise(pHmean = mean(pH_in_lab, na.rm=TRUE), SE = sd(pH_in_lab, na.rm=TRUE)/n())%>%
     write.table(.,paste0("Data/",foldername,"/pH_simple",platename,".csv"),sep=",", row.names=FALSE)
 }
+
