@@ -13,26 +13,26 @@ library(tidyverse)
 library(seacarb)
 
 ## File names -------------------
-foldername<-'Katie 0109202' # folder of the day
-filename<-'MCresolPlate_1-10-2020.csv' # data
-sampleID<-'Plate11_1-10-2020_Template.csv' # template of sample IDs
-platename<-'KatieMcresol' # this will be the name of your file
+foldername<-'Katie_20200117' # folder of the day
+filename<-'Plate_1-21-2020.csv' # data
+sampleID<-'Plate_1-21-2020_Templates.csv' # template of sample IDs
+platename<-'Plate_20200121' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
 Temperature<-25
-Salinity<-35 # note if you have a range of salinities then import a file with all salinities and modify script below (add a column with sample IDs and left_join with AllData Df)
+Salinity<-34 # note if you have a range of salinities then import a file with all salinities and modify script below (add a column with sample IDs and left_join with AllData Df)
 
 ### Temperature in situ (either in the aquarium or in the field)#####
 ## If you want to calculate insitu pH then enter TRUE in the statement below and the filename with the temperature files, if not enter FALSE
-CalculateInSitu<-TRUE
+CalculateInSitu<-FALSE
 TempInSituFileName<-'TempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
 
 # Change slope and intercept with each new batch of dye --------------
 # Dye created by: Deme Panos
 # Date created: XXXX
-dye_intercept<-17.228
-dye_slope<--0.5959
+dye_intercept<-31.397
+dye_slope<--0.6212
 
 # DONT CHANGE ANYTHING BELOW HERE ----------------------------------
 
