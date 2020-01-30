@@ -3,6 +3,7 @@
 **Contents**  
 * [**Setting up the Plate Read in SMP7**](#Setting_up_plate_read)  
 * [**Preparing the well plate**](#Preparing_well_plate)  
+* [**Exporting Data and Protocols**](#Exporting_data)  
 
 
 <a name=Setting_up_plate_read></a> **Setting up the plate read in SMP7**  
@@ -51,6 +52,17 @@
 1. If you are running a standard for your plate, run your standard **before you prepare and run the rest of your plate** to make sure the instrument is reading correctly and/or that your standard is correct.
     1. Follow all the same previous steps, but in your configuration and plate mapping, only select the wells used for your your standard.
     1. Save and check your standard values before proceeding with your unknown samples.
+
+<a name=Preparing_well_plate></a> **Preparing the well plate**  
+
+1. When handling well plates, be careful to not touch the bottom of the plate with bare hands/gloves or place the plate on any surface that may scratch it.  For absorbance readings, light is projected through the bottom of the plate and any disturbed surface will likely affect the reading.  Place on kim wipes when set down, and hold by the sides when carrying/handling.
+1. Each well has a maximum volume of 340uL, but it is advisable to not greatly exceed 300uL, especially if shaking before your read.
+1. Once finished with the plate, use DI water to rinse out the wells, and dispose of both the initial contents and the rinse solution as needed per the contents' waste procedures.
+    1. If using any solutions with Mercuric Chloride (HgCL2) use the large beaker labeled "HgCl2" to dump the contents and into which to rinse with DI.  Pour these contents from the beaker into a proper waste container.
+1. Let the plate dry upside down on kim wipes and/or use only kim wipes to wipe away any remaining DI water, again being careful to not disturb the bottom surface of the plate.
+
+<a name=Exporting_data></a> **Exporting Data and Protocols**  
+
 1. Saving your data
     1. From the main program screen, select Export Template in the upper menu.  This file exports the well ID's you provided in your plate map prior to your read.
     1. To export your read values, click on the "File" tab which is depicted by a circular well plate icon in the upper lefthand corner of the program screen to reveal a dropdown menu.
@@ -63,11 +75,3 @@
     1. Save your protocol (plate configuration and map settings) in the following folder location on the lab computer: C drive > Users > Public > Public Documents > pH_Spec_Protocols > (Your Folder)
     1. Save as a protocol file .spr using the following as a guideline: name_date_Template.spr
     1. To save your read data as a data file, follow the same process, but save as a data file .sda
-
-<a name=Preparing_well_plate></a> **Preparing the well plate**  
-
-1. When handling well plates, be careful to not touch the bottom of the plate with bare hands/gloves or place the plate on any surface that may scratch it.  For absorbance readings, light is projected through the bottom of the plate and any disturbed surface will likely affect the reading.  Place on kim wipes when set down, and hold by the sides when carrying/handling.
-1. Each well has a maximum volume of 340uL, but it is advisable to not greatly exceed 300uL, especially if shaking before your read.
-1. Once finished with the plate, use DI water to rinse out the wells, and dispose of both the initial contents and the rinse solution as needed per the contents' waste procedures.
-    1. If using any solutions with Mercuric Chloride (HgCL2) use the large beaker labeled "HgCl2" to dump the contents and into which to rinse with DI.  Pour these contents from the beaker into a proper waste container.
-1. Let the plate dry upside down on kim wipes and/or use only kim wipes to wipe away any remaining DI water, again being careful to not disturb the bottom surface of the plate.
