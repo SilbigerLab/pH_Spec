@@ -2,4 +2,4 @@
 
 Data and code for pH analysed using the spectrophotometer
 
-[Absorbance for 96-Well Plate](#Protocols/Absorbance_SOP.md)
+[Absorbance for 96-Well Plate](Protocols/Absorbance_SOP.md)
