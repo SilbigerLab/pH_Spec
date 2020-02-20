@@ -11,7 +11,7 @@
 1. Open the SoftMax Pro 7 program from the desktop.
 1. If the program does not automatically connect to the plate reader (depicted by an icon of the plate reader in the upper left corner of the program with a green check if connected or a circle with a line if not connected), then click on the plate reader icon for a list of available plate readers.  Select the reader and click OK.
 1. If you intend to read your plate at a particular temperature, click Temperature and turn "Set" on and type in the temperature in Celcius.
-1. Select the "configure your acquisition settings" icon (two orange gears).
+1. Select the "Acquisition Settings" icon (two orange gears).
     1. Make sure the appropriate "Read Mode" and "Read Type" are selected.
         1. Read Mode: ABS (Absorbance)
         1. Read Type: Choose between Endpoint (most common and quickest), Kinetic, Well Scan, and Spectrum
@@ -21,7 +21,7 @@
     1. If you want to shake the plate prior to your first read, check the box and set the number of seconds to shake.  From the dropdown menu, select the shake mode.
     1. If you are planning to read a full plate, or if you are planning to read a rectangular portion of the plate, select Row of Column from the dropdown menu.  If you are planning to read a more randomized sequence of wells, select Well from the dropdown.  The latter option may slow down read time.
     1. Press OK to save these settings.
-1. Select the "configure your plate layout" icon (well plate).
+1. Select the "Template Editor" icon (well plate).
     1. Now you will define your plate map.  This is important for generating a standard curve and unknown sample values based off the standard curve, and/or where you will identify your plate blanks.
     1. Click and drag your mouse over the wells you want to assign as your blanks, standards, or unknown samples.  If you selected Well in the configuration settings above, you can hold down Ctrl as you select your wells.
     1. Once you've highlighted a set of your wells, either click Blank if these are you blank wells, or look at the right-hand menu, and select either Standards or Unknown.
@@ -63,11 +63,12 @@
 
 <a name=Exporting_data></a> **Exporting Data and Protocols**  
 
-1. Saving your data
-    1. From the main program screen, select Export Template in the upper menu.  This file exports the well ID's you provided in your plate map prior to your read.
-    1. To export your read values, click on the "File" tab which is depicted by a circular well plate icon in the upper lefthand corner of the program screen to reveal a dropdown menu.
-    1. Select Export, then click export as xls file.
-    1. In the export options window, select either the whole experiment or simply click each plate you want to export, then select "export as Plate".
+1. Exporting your data
+    1. From the Home screen, select Export  in the Template Tools ection of the upper menu.  This file exports the well ID's you provided in your plate map prior to your read.  Change "Save as Type" to .xls
+        1. Save your plates using the following as a guideline: name_date_Template.xls
+    1. To export your read values, click on the "File" tab which is depicted by an encirculed well plate icon in the upper lefthand corner of the program screen to reveal a dropdown menu.
+    1. Select Export, then click export to XML XLS TXT.
+    1. In the export options window, select each plate you want to export; select to either export just the raw data, just the reduced data, or both (if you set "blanks" in your well plate template earlier, it is suggested to export either the raw data or both raw and reduced, rather than just reduced).  In Output Format, select Plate (.txt or .xls).  Change "Save as Type" to .xls
     1. Save your plates using the following as a guideline: name_date_Plate.xls
         1. Files are exported as .xls files, so once saved, you will need to open the file and save a .csv to access in R.
 1. Saving your protocol and data file
@@ -75,3 +76,4 @@
     1. Save your protocol (plate configuration and map settings) in the following folder location on the lab computer: C drive > Users > Public > Public Documents > pH_Spec_Protocols > (Your Folder)
     1. Save as a protocol file .spr using the following as a guideline: name_date_Template.spr
     1. To save your read data as a data file, follow the same process, but save as a data file .sda
+        1. You can open a data file in SoftMax Pro to work with your data later in the program and subsequently export later on using the above steps.
