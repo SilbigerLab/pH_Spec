@@ -14,9 +14,9 @@ library(seacarb)
 
 ## File names -------------------
 foldername<-'Katie_20200117' # folder of the day
-filename<-'Plate_1-21-2020.csv' # data
-sampleID<-'Plate_1-21-2020_Templates.csv' # template of sample IDs
-platename<-'Plate_20200121' # this will be the name of your file
+filename<-'TrisPlate_2-25-2020.csv' # data
+sampleID<-'TrisPlate_2-25-2020_Template.csv' # template of sample IDs
+platename<-'TrisPlate20200225' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
@@ -25,14 +25,14 @@ Salinity<-34 # note if you have a range of salinities then import a file with al
 
 ### Temperature in situ (either in the aquarium or in the field)#####
 ## If you want to calculate insitu pH then enter TRUE in the statement below and the filename with the temperature files, if not enter FALSE
-CalculateInSitu<-FALSE
-TempInSituFileName<-'TempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
+CalculateInSitu<-TRUE
+TempInSituFileName<-'TrisTempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
 
 # Change slope and intercept with each new batch of dye --------------
-# Dye created by: Deme Panos
-# Date created: XXXX
-dye_intercept<-31.397
-dye_slope<--0.6212
+# Dye created by: Katherine Hannibal
+# Date created: 1-20-20
+dye_intercept<-17.228
+dye_slope<--0.5959
 
 # DONT CHANGE ANYTHING BELOW HERE ----------------------------------
 
