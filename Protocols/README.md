@@ -1,5 +1,7 @@
 # Protocols for the SpectraMax iD3
 
-Data and code for pH analysed using the spectrophotometer
+Protocols for using the Silbiger Lab spectrophotometer.
 
-[Absorbance for 96-Well Plate](Absorbance_SOP.md)
+[Plate Read Setup](Plate_Read_Setup_SOP.md)  
+[Preparing the Well Plate](Prepare_Well_Plate_SOP.md)  
+[Export Data](Export_Data_SOP.md)  
