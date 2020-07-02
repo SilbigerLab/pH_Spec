@@ -1,7 +1,8 @@
 # Protocol for setting up a Plate Read using the SpectraMax iD3 Spectrophotometer SoftMax Pro 7 (SMP7) software
 
 **Contents**  
-* [**General Settings**](#General_settings)  
+* [**General Settings**](#General_settings) 
+* [**Temperature Control**](#Temperature_control)
 * [**Mapping your Plate**](#Plate_map)  
 * [**Work Flow**](#Work_flow)  
 
@@ -21,7 +22,16 @@
     1. If you are planning to read a full plate, or if you are planning to read a rectangular portion of the plate, select Row of Column from the dropdown menu.  If you are planning to read a more randomized sequence of wells, select Well from the dropdown.  The latter option may slow down read time.
     1. Press OK to save these settings.
 
-<a name="Plate_map"></a> **Mapping your Plate**  
+<a name=Temperature_control></a> **Temperature Control**  
+1. In SMP7 select "Temperature" from Instrument Commands in the main toolbar.
+1. Turn Temperature Control "On" and type the desired temperature (ranges from 15C to 66C)
+    1. Instrument needs time to stabilize at temperature, so plan to set the temperature well-enough in advance of when you'll do your plate read.
+    1. 3 minutes to stabilize at 37C
+    1. 40 minutes to stabilize at 66C
+1. **Note:** The plate reader has no built-in cooling mechanism, so if you plan to use various temperatures for your reads, start with the lowest temperature and ramp up.
+1. **Note:** Without any temperature settings, the plate reader may naturally increase its internal temperature to up to 2degC over ambient room temperature.  If you plan to run samples at 25degC, make sure the room is 23degC or cooler to ensure stable temperature for readings.
+
+<a name=Plate_map></a> **Mapping your Plate**  
 
 1. Select the "Template Editor" icon (well plate).
     1. Now you will define your plate map.  This is important for generating a standard curve and unknown sample values based off the standard curve, and/or where you will identify your plate blanks.
