@@ -1,5 +1,9 @@
 # Protocol for setting up a Plate Read using the SpectraMax iD3 Spectrophotometer SoftMax Pro 7 (SMP7) software
 
+# written by Danielle Barnas
+# created: 9/26/2019
+# edited: 9/2/2020
+
 **Contents**  
 * [**General Settings**](#General_settings) 
 * [**Temperature Control**](#Temperature_control)
@@ -45,8 +49,10 @@
     1. Unknown
         1. It is advisable you select at least three wells as replicates for each unknown sample.
         1. For each selected set of replicates you can provide an ID in the field below the plate map, then select Assign.  It is advisable to provide an ID for your wells so you can assign these to your data later when processing.
+        1. Use identical ID's for any replicate wells (for running stats in R later)
 1. Once your plate map is completed, select OK to save your plate.  If you close this window without selecting OK, your changes will not be saved.
-1. If you itend to run the same plate through the reader more than once (ie once without m-cresol dye, and then once more with dye), then add as many plates as needed on the lefthand sidebar.
+1. If you itend to run the same plate through the reader more than once (i.e., once without m-cresol dye, and then once more with dye), then add multiple plates as needed on the lefthand sidebar.
+    1. Each plate will save each run's set of data (i.e., data from your sample without m-cresol dye, and data from your sample with m-cresol)
     1. Shortcut: duplicate the plate you already created to keep the configuration settings of that plate. You do not need to relabel subsequent plates in the progrma if their labels would exactly match those from Plate1.
     1. If you rerun your plate without creating more plates in your experiment (as labeled on the lefthand sidebar), data from your previous run will be overwritten.  Alternatively, you can save your data as you go, but in case of mistakes, it is not advisable to overwrite data before completing your set of plate reads.
 1. Once your plate is ready, follow the protocol for [Preparing Your Well Plate](Protocols/Prepare_Well_Plate_SOP.md), and then either click "Read" (green play button) or set a [Work Flow](#Work_flow) to set the series of events during your read.
