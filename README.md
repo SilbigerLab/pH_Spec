@@ -9,7 +9,7 @@ Protocols, R scripts, and saved data for pH analysed using the Silbiger Lab spec
 
 **R Scripts**  
 [Calculate pH using the m-cresol spec method](Scripts/pHSpecScript.R)  
-[Tris Calibrate probe pH readings](Scripts/Tris_pH_Slop.R)  
+[Tris Calibrate probe pH readings](Scripts/Tris_pH_Slope.R)  
 [Clean data from the HOBO pH logger for analysis](Scripts/Tidy_hobo_data.R)  
 [Compare readings from the HOBO pH logger](Scripts/hobo_pH_tidy_regression.R)  
 
