@@ -21,6 +21,11 @@
 1. Place your sample vials in a water bath at the desired temperature (e.g., 25degC)
 1. Once your samples and the spec are at temperature, use a 1000uL pipette with a new tip per sample (use the same tip for each set of replicates) to pipette **300uL** of sample into each well of a clean well plate (no scratches or smudges on the bottom of the plate).
   1. Be quick so your sample does not shift from the desired temperature (if your ambient room temperature is not the same)
+  1. If you are concerned about a steep temperature change of your samples during this pipetting stage:
+    1. Refer to the [Plate Read Setup SOP](Plate_Read_Setup_SOP.md) to change the read settings to "Well" (as opposed to Row or Column).
+    1. By changing the read settings to Well, the spec with scan each well for all designated wavelengths before moving to the next well (compare to Row, which will scan all wells at one wavelength before scanning all wells at the next wavelength).
+    1. When pipetting your sample into the wells, start from the last well that will be read (the most bottom right well) and work backwords, the last pipetted well being the first well to be read (the most upper left well).
+    1. This will allow the spec to read samples closest to your set temperature first, while any wells that may have cooled down will have time to come back up to temperature inside the spec.
 1. Immediately place your well plate into the Spec on the reader tray and run your samples.
 
 <a name="adding_m_cresol"></a> **Adding m-cresol**
