@@ -14,3 +14,7 @@ Protocols, R scripts, and saved data for pH analysed using the Silbiger Lab spec
 [Compare readings from the HOBO pH logger](Scripts/hobo_pH_tidy_regression.R)  
 
 [**Data folders**](Data)
+
+**Manual and System Information**  
+[User Guide](https://github.com/SilbigerLab/Protocols/blob/master/References_and_Manuals/SpectraMax_iD3_Manual/SpectraMax_iD3_User_Guide.pdf)  
+[System Information for SpectraMax iD3](https://github.com/SilbigerLab/Protocols/blob/master/References_and_Manuals/SpectraMax_iD3_Manual/System_Information.md)  
