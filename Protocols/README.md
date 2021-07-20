@@ -33,7 +33,7 @@ edited: 9/2/2020
 
 <a name="Troubleshooting"></a> **Troubleshooting**
 1. For quick How-To videos, select the Maintenance icon (wrench) on the bottom left toolbar, then select Support.  Here you can watch videos on
-    1. [Getting to konw youre new ID series reader](https://www.moleculardevices.com/en/assets/tutorials-videos/br/getting-to-know-your-new-spectramax-id3)
+    1. [Getting to know your new ID series reader](https://www.moleculardevices.com/en/assets/tutorials-videos/br/getting-to-know-your-new-spectramax-id3)
     1. [Personalizing your ID series reader](https://www.moleculardevices.com/en/assets/tutorials-videos/br/personalizing-your-spectramax-id3)
     1. [Starting a plate read](https://www.moleculardevices.com/en/assets/tutorials-videos/br/starting-plate-read-using-spectramax-id3-multi-mode)
     1. [Viewing results](https://www.moleculardevices.com/en/assets/tutorials-videos/br/viewing-results-on-spectramax-id3-multi-mode)
@@ -74,7 +74,7 @@ edited: 9/2/2020
     1. In Wavelengths, use the dropdown menu to select how many wavelengths you intend to use, and type each wavelength into the boxes provided.
     1. Unless comparing your samples in the well plate directly to samples in cuvettes, do not activate "Pathcheck"
     1. If you want to shake the plate prior to your first read, check the box and set the number of seconds to shake.  From the dropdown menu, select the shake mode.
-    1. If you are planning to read a full plate, or if you are planning to read a rectangular portion of the plate, select Row of Column from the dropdown menu.  If you are planning to read a more randomized sequence of wells, select Well from the dropdown.  The latter option may slow down read time.
+    1. If you are planning to read a full plate, or if you are planning to read a rectangular portion of the plate, select Row of Column from the dropdown menu of Read Order.  If you are planning to read a more randomized sequence of wells, select Well from the dropdown.  The latter option may slow down read time.
     1. Press OK to save these settings.
 
 **Measuring pH using m-cresol**
@@ -83,15 +83,17 @@ edited: 9/2/2020
 2. Set wavelengths to 730nm, 578nm, 434nm
 3. Deselect Pathcheck
 4. Deselect Shake
-5. Select Well read mode
+5. More Settings: Read Order: Well
 6. Press OK to save these settings
 7. From the Document page, right click Plate1 and duplicate until you have 4 plates under your Experiment
 8. Rename the first two plates as Tris1 and Tris2, then the next two plates as Plate1 and Plate2
-9. In both Tris1 and Tris2 General Settings, select the Read area as the first three wells in column 1. These will be your initiral tris triplicates
+9. In both Tris1 and Tris2 General Settings, select the Read area as the first three wells in column 1. These will be your initiral tris triplicates.
+    1. Wells highlighted in black will be read.  Cells highlighted in white will be skipped.
 10. In both Plate1 and Plate2 General Settings, select the Read area as all the wells you need to run triplicates of your samples **excluding the first three wells in column1** because these wells will still contain tris during your plate reads, but we do not want to save the tris data in these plate reads.
 11. For both the Tris and Plate reads, the first plate will be run without dye, and the second plate will be run with dye.  Two separate plates need to be assigned for each set of plate reads so that no data is overwritten by subseuquent reads.
 
 <a name=Temperature_control></a> **Temperature Control**  
+1. Observe the current instrument temperature on the SMP7 Home page upper left corner.
 1. In SMP7 select "Temperature" from Instrument Commands in the main toolbar.
 1. Turn Temperature Control "On" and type the desired temperature (ranges from 15C to 66C)
     1. Instrument needs time to stabilize at temperature, so plan to set the temperature well-enough in advance of when you'll do your plate read.
@@ -115,8 +117,8 @@ edited: 9/2/2020
     1. Unknown
         1. It is advisable you select at least three wells as replicates for each unknown sample.
         1. For each selected set of replicates you can provide an ID in the field below the plate map, then select Assign.  It is advisable to provide an ID for your wells so you can assign these to your data later when processing.
-        1. Use identical ID's for any replicate wells (for running stats in R later)
-1. Once your plate map is completed, select OK to save your plate.  If you close this window without selecting OK, your changes will not be saved.
+        1. Use identical ID's for any replicate wells (for post-processing in R later)
+1. Once your plate map is completed, select OK to save your plate configuration.  If you close this window without selecting OK, your changes will not be saved.
 1. If you itend to run the same plate through the reader more than once (i.e., once without m-cresol dye, and then once more with dye), then add multiple plates as needed on the lefthand sidebar.
     1. Each plate will save each run's set of data (i.e., data from your sample without m-cresol dye, and data from your sample with m-cresol)
     1. Shortcut: duplicate the plate you already created to keep the configuration settings of that plate. You do not need to relabel subsequent plates in the progrma if their labels would exactly match those from Plate1.
@@ -143,11 +145,12 @@ edited: 9/2/2020
 
 **Measuring pH using m-cresol**
 
-1. "Set Temp (25c)" - "Open Reader" - "Read Plate1" - "Open Reader" - "Shake Plate (30sec)" - "Read Plate2" - "Open Reader"  
-1. The instrument will open the reader for the first time one the temperature is at your set point, in this case 25 degrees Celcius.
+1. "Set Temp (25c)" - "Open Drawer" - "Read Plate1" - "Open Drawer" - "Shake Plate (30sec)" - "Read Plate2" - "Open Drawer"  
+1. The instrument will open the reader drawer for the first time once the temperature is at your set point (in this case, 25 degrees Celcius).
+    1. If the instrument is already at 25degC when you Start the workflow, the workflow may not advance to the next step automatically.  In this case, click Pause in the upper left corner of the workflow menu, then Start again to advance to the next step of opening the drawer.
 1. Once you've placed your plate in the holder,  you must return to the Document tab and then click "Open/Close" near the top of the program screen.
 1. The first plate will be read and saved in Plate1, then the holder will open and eject again.  Remove the plate, pipette the m-cresol dye in the plate, then place back in the holder and, as in the previous step, close the holder.
-1. The plate will shake for 30 seconds, then the plate will be read and saved in Plate2, then the holder will open and eject.
+1. The plate will shake for 30 seconds, the plate will be read and saved in Plate2, then the holder will open and eject.
 
 
 
@@ -193,6 +196,7 @@ edited: 9/2/2020
 <a name=cleaning_and_storage></a> **Cleaning and storage**
 
 1. Once finished with the plate, use DI water to rinse out the wells, and dispose of both the initial contents and the rinse solution as needed per the contents' waste procedures.
+  1. Use a wide-mouthed beaker to dump contents of the plate into, and use a squeeze bottle with DI water to rinse out the wells over the beaker.
   1. If using any solutions with Mercuric Chloride (HgCl2) use the large beaker labeled "HgCl2" to dump the contents and into which to rinse with DI.  Pour these contents from the beaker into a proper waste container.
   1. Note that liquid waste with m-cresol should be stored separately from liquid waste without m-cresol (ex. one waste container for HgCl2 waste, and one for m-cresol and/or m-cresol with HgCl2 waste)
 1. Let the plate dry on kim wipes and covered on top by kim wipes, and/or use only kim wipes to wipe away any remaining DI water, again being careful to not disturb (smudge or scratch) the bottom surface of the plate.
