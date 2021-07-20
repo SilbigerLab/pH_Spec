@@ -1,13 +1,14 @@
 # Protocol for the Silbiger Lab SpectraMax iD3 Spectrophotometer
 
-## written by Danielle Barnas
-## created: 9/26/2019
-## edited: 9/2/2020
+### written by Danielle Barnas
+created: 9/26/2019  
+edited: 9/2/2020
 
 [Startup SOP](#Startup_SOP)  
 [Plate Read Setup](#Plate_Read_Setup_SOP)  
 [Preparing the Well Plate](#Prepare_Well_Plate_SOP)  
 [Export Data](#Export_Data_SOP)  
+[measuring pH using the m-cresol method](#pH_SOP)
 
 
 <a name="Startup_SOP"></a>
@@ -77,6 +78,20 @@
     1. If you are planning to read a full plate, or if you are planning to read a rectangular portion of the plate, select Row of Column from the dropdown menu.  If you are planning to read a more randomized sequence of wells, select Well from the dropdown.  The latter option may slow down read time.
     1. Press OK to save these settings.
 
+**Measuring pH using m-cresol**
+
+1. Read Mode: ABS
+2. Set wavelengths to 730nm, 578nm, 434nm
+3. Deselect Pathcheck
+4. Deselect Shake
+5. Select Well read mode
+6. Press OK to save these settings
+7. From the Document page, right click Plate1 and duplicate until you have 4 plates under your Experiment
+8. Rename the first two plates as Tris1 and Tris2, then the next two plates as Plate1 and Plate2
+9. In both Tris1 and Tris2 General Settings, select the Read area as the first three wells in column 1. These will be your initiral tris triplicates
+10. In both Plate1 and Plate2 General Settings, select the Read area as all the wells you need to run triplicates of your samples **excluding the first three wells in column1** because these wells will still contain tris during your plate reads, but we do not want to save the tris data in these plate reads.
+11. For both the Tris and Plate reads, the first plate will be run without dye, and the second plate will be run with dye.  Two separate plates need to be assigned for each set of plate reads so that no data is overwritten by subseuquent reads.
+
 <a name=Temperature_control></a> **Temperature Control**  
 1. In SMP7 select "Temperature" from Instrument Commands in the main toolbar.
 1. Turn Temperature Control "On" and type the desired temperature (ranges from 15C to 66C)
@@ -85,6 +100,7 @@
     1. 40 minutes to stabilize at 66C
 1. **Note:** The plate reader has no built-in cooling mechanism, so if you plan to use various temperatures for your reads, start with the lowest temperature and ramp up.
 1. **Note:** Without any temperature settings, the plate reader may naturally increase its internal temperature to up to 2degC over ambient room temperature.  If you plan to run samples at 25degC, make sure the room is 23degC or cooler to ensure stable temperature for readings.
+    1. Samples run for pH measurements must be kept at 25degC, both in a water bath before measurement, and during measurement in the spec, so set the spec temperature to 25degC.
 
 <a name=Plate_map></a> **Mapping your Plate**  
 
@@ -106,7 +122,13 @@
     1. Each plate will save each run's set of data (i.e., data from your sample without m-cresol dye, and data from your sample with m-cresol)
     1. Shortcut: duplicate the plate you already created to keep the configuration settings of that plate. You do not need to relabel subsequent plates in the progrma if their labels would exactly match those from Plate1.
     1. If you rerun your plate without creating more plates in your experiment (as labeled on the lefthand sidebar), data from your previous run will be overwritten.  Alternatively, you can save your data as you go, but in case of mistakes, it is not advisable to overwrite data before completing your set of plate reads.
-1. Once your plate is ready, follow the protocol for [Preparing Your Well Plate](Protocols/Prepare_Well_Plate_SOP.md), and then either click "Read" (green play button) or set a [Work Flow](#Work_flow) to set the series of events during your read.
+1. Once your plate is ready, follow the protocol for [Preparing Your Well Plate](#Prepare_Well_Plate_SOP), and then either click "Read" (green play button) or set a [Work Flow](#Work_flow) to set the series of events during your read.
+
+**Measuring pH using m-cresol**
+
+1. Select the first three wells of column 1, and click Unknown
+2. Label these wells as "Tris" (all the same name), and click Assign
+3. Select each subsequent set of three wells (your sample triplicates), and assign each set of three wells an ID corresponding to the sample set.  Each well in a set of triplicates should have the same name.
 
 
 <a name=Work_flow></a> **Work flow**  
@@ -115,15 +137,19 @@
 1. The left sidebar now gives options for events to occur for the plate read.  Click and drag any of the items along the line of the open field to the right.
 1. Items can be placed anywhere along the line, before or after other events, and can be either moved once placed, deleted, or modified.
 1. Once your workflow is set, click "Run" in the upper menu.  You can Pause or Stop the flow at any point, but if you Resume from Paused, the step you were previously on will be skipped and the Flow will resume at the next step. 
-1. Example: Reading a plate of unknowns for pH using m-cresol dye:
-    1. "Set Temp (25c)" - "Open Reader" - "Read Plate1" - "Open Reader" - "Shake Plate (30sec)" - "Read Plate2" - "Open Reader"  
-    1. The instrument will open the reader for the first time one the temperature is at your set point, in this case 25 degrees Celcius.
-    1. Once you've placed your plate in the holder,  you must return to the Document tab and then click "Open/Close" near the top of the program screen.
-    1. The first plate will be read and saved in Plate1, then the holder will open and eject again.  Remove the plate, pipette the m-cresol dye in the plate, then place back in the holder and, as in the previous step, close the holder.
-    1. The plate will shake for 30 seconds, then the plate will be read and saved in Plate2, then the holder will open and eject.
+1. Example: Reading a plate of unknowns for pH using m-cresol dye: see below
 1. If you are running a standard for your plate (e.g. tris), run your standard **before you prepare and run the rest of your plate** to make sure the instrument is reading correctly and/or that your standard is correct.
     1. Follow all the same previous steps, but in your configuration and plate mapping, only select the wells used for your standard to be read.
     1. Save and check your standard values before proceeding with your unknown samples.
+
+**Measuring pH using m-cresol**
+
+1. "Set Temp (25c)" - "Open Reader" - "Read Plate1" - "Open Reader" - "Shake Plate (30sec)" - "Read Plate2" - "Open Reader"  
+1. The instrument will open the reader for the first time one the temperature is at your set point, in this case 25 degrees Celcius.
+1. Once you've placed your plate in the holder,  you must return to the Document tab and then click "Open/Close" near the top of the program screen.
+1. The first plate will be read and saved in Plate1, then the holder will open and eject again.  Remove the plate, pipette the m-cresol dye in the plate, then place back in the holder and, as in the previous step, close the holder.
+1. The plate will shake for 30 seconds, then the plate will be read and saved in Plate2, then the holder will open and eject.
+
 
 
 <a name="Prepare_Well_Plate_SOP"></a>
@@ -141,7 +167,8 @@
 1. When handling well plates, be careful to not touch the bottom of the plate with bare hands/gloves or place the plate on any surface that may scratch it.  For absorbance readings, light is projected through the bottom of the plate and any disturbed surface will likely affect the reading.  Place on kim wipes when set down, and hold by the sides when carrying/handling.
 1. Each well has a maximum volume of 340uL, but it is advisable to not greatly exceed 300uL, especially if shaking before your read.
 
-<a name="filling_the_well_plate"></a> **Filling the well plate**
+
+<a name="filling_the_well_plate"></a> **Filling the well plate for pH measurements using m-cresol**
 
 1. Refer to your plate template on the SMP7 software to make sure you pipette your samples into their designated wells.
 1. Place your sample vials in a water bath at the desired temperature (e.g., 25degC)
@@ -198,7 +225,13 @@
     1. You can open a data file in SoftMax Pro to work with your data later in the program and subsequently export later on using the above steps.
 
 
+<a name="pH_SOP"></a>
+## Protocol for measuring pH on the spectrophotometer using m-cresol Purple dye
 
+**Tris Read**
+
+1. Before measuring absorbance of your seawater samples, first check that both the spec is functioning normally and m-cresol dye is still providing accurate results.
+2. When setting up your plate map, 
 
 
 
