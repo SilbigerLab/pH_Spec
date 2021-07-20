@@ -8,7 +8,6 @@ edited: 9/2/2020
 [Plate Read Setup](#Plate_Read_Setup_SOP)  
 [Preparing the Well Plate](#Prepare_Well_Plate_SOP)  
 [Export Data](#Export_Data_SOP)  
-[measuring pH using the m-cresol method](#pH_SOP)
 
 
 <a name="Startup_SOP"></a>
@@ -223,17 +222,5 @@ edited: 9/2/2020
 1. Save as a protocol file .spr using the following as a guideline: (name)_(date)_Protocol.spr
 1. To save your read data as a data file, follow the same process, but save as a data file .sda
     1. You can open a data file in SoftMax Pro to work with your data later in the program and subsequently export later on using the above steps.
-
-
-<a name="pH_SOP"></a>
-## Protocol for measuring pH on the spectrophotometer using m-cresol Purple dye
-
-**Tris Read**
-
-1. Before measuring absorbance of your seawater samples, first check that both the spec is functioning normally and m-cresol dye is still providing accurate results.
-2. When setting up your plate map, 
-
-
-
 
 
