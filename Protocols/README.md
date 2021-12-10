@@ -57,6 +57,7 @@ edited: 9/2/2020
 
 **Contents**  
 * [**General Settings**](#General_settings) 
+* [Measuring pH using M-cresol purple dye](#mcresol)
 * [**Temperature Control**](#Temperature_control)
 * [**Mapping your Plate**](#Plate_map)  
 * [**Work Flow**](#Work_flow)  
@@ -77,7 +78,7 @@ edited: 9/2/2020
     1. If you are planning to read a full plate, or if you are planning to read a rectangular portion of the plate, select Row of Column from the dropdown menu of Read Order.  If you are planning to read a more randomized sequence of wells, select Well from the dropdown.  The latter option may slow down read time.
     1. Press OK to save these settings.
 
-**Measuring pH using m-cresol**
+<a name=mcresol></a> **Measuring pH using m-cresol**
 
 1. Read Mode: ABS
 2. Set wavelengths to 730nm, 578nm, 434nm
@@ -87,12 +88,14 @@ edited: 9/2/2020
 6. Press OK to save these settings
 7. From the Document page, right click Plate1 and duplicate until you have 4 plates under your Experiment
 8. Rename the first two plates as Tris1 and Tris2, then the next two plates as Plate1 and Plate2
-9. In both Tris1 and Tris2 General Settings, select the Read area as the first three wells in column 1. These will be your initiral tris triplicates.
-    1. Wells highlighted in black will be read.  Cells highlighted in white will be skipped.
+9. In both Tris1 and Tris2 General Settings, select the Read area as the first three wells in column 1. These will be your initial tris triplicates.
+    1. Wells highlighted in black will be read by the spec.  Cells highlighted in white will be skipped.
 10. In both Plate1 and Plate2 General Settings, select the Read area as all the wells you need to run triplicates of your samples **excluding the first three wells in column1** because these wells will still contain tris during your plate reads, but we do not want to save the tris data in these plate reads.
 11. For both the Tris and Plate reads, the first plate will be run without dye, and the second plate will be run with dye.  Two separate plates need to be assigned for each set of plate reads so that no data is overwritten by subseuquent reads.
+12. To setup the plate, refer to [m-cresol plate setup.](#setup_mcresol)
 
 <a name=Temperature_control></a> **Temperature Control**  
+
 1. Observe the current instrument temperature on the SMP7 Home page upper left corner.
 1. In SMP7 select "Temperature" from Instrument Commands in the main toolbar.
 1. Turn Temperature Control "On" and type the desired temperature (ranges from 15C to 66C)
@@ -125,11 +128,12 @@ edited: 9/2/2020
     1. If you rerun your plate without creating more plates in your experiment (as labeled on the lefthand sidebar), data from your previous run will be overwritten.  Alternatively, you can save your data as you go, but in case of mistakes, it is not advisable to overwrite data before completing your set of plate reads.
 1. Once your plate is ready, follow the protocol for [Preparing Your Well Plate](#Prepare_Well_Plate_SOP), and then either click "Read" (green play button) or set a [Work Flow](#Work_flow) to set the series of events during your read.
 
-**Measuring pH using m-cresol**
+<a name=setup_mcresol></a> **Measuring pH using m-cresol**
 
-1. Select the first three wells of column 1, and click Unknown
-2. Label these wells as "Tris" (all the same name), and click Assign
-3. Select each subsequent set of three wells (your sample triplicates), and assign each set of three wells an ID corresponding to the sample set.  Each well in a set of triplicates should have the same name.
+1. Follow the above steps for [mapping your plate](#Plate_map), then use the specifics below for an m-cresol run
+2. Select the first three wells of column 1, and click Unknown
+3. Label these wells as "Tris" (all the same name), and click Assign
+4. Select each subsequent set of three wells (your sample triplicates), and assign each set of three wells an ID corresponding to the sample set.  Each well in a set of triplicates should have the same name.
 
 
 <a name=Work_flow></a> **Work flow**  
