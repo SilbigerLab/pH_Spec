@@ -3,9 +3,8 @@
 Protocols, R scripts, and saved data for pH analysed using the Silbiger Lab spectrophotometer.
 
 **Protocols**  
-[Plate Read Setup](Protocols/Plate_Read_Setup_SOP.md)  
-[Preparing the Well Plate](Protocols/Prepare_Well_Plate_SOP.md)  
-[Export Data](Protocols/Export_Data_SOP.md)  
+[Measuring pH using m-Cresol purple dye](https://github.com/SilbigerLab/pH_Spec/blob/master/Protocols/Measuring_pH_using_mCresol_dye.md)  
+[Spec general use protocol](https://github.com/SilbigerLab/pH_Spec/blob/master/Protocols/Spec_General_Protocol)
 
 **R Scripts**  
 [Calculate pH using the m-cresol spec method](Scripts/pHSpecScript.R)  
