@@ -132,6 +132,8 @@ edited: 5/17/2022
     1. Pour these contents from the beaker into a proper waste container labeled for m-cresol.
     1. Note that liquid waste with m-cresol should be stored separately from liquid waste without m-cresol (ex. one waste container for HgCl2 waste only, and one for m-cresol and/or m-cresol with HgCl2 waste)
 1. Let the plate dry on top of kim wipes and covered by kim wipes over top, and/or use only kim wipes to wipe away any remaining DI water, again being careful to not disturb (smudge or scratch) the bottom surface of the plate.
+1. Once files have been saved and pushed to your GitHub repository, close out of the SoftMax Pro program and press Disconnect (if needed) on the Spec display screen.
+1. If you do not intend to use the Spec within 2-3 weeks, tap the green power button. When a window pops up asking if you would like to Shut Down, tap Shut Down. Otherwise, leave the instrument on.
 
 
 <a name=Saving_protocols></a> **Saving Protocols and Data Files**  
