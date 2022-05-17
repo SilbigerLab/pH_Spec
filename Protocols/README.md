@@ -1,10 +1,9 @@
-# Protocol for the Silbiger Lab SpectraMax iD3 Spectrophotometer
+# Protocol for measuring pH using m-Cresol purple dye the Silbiger Lab SpectraMax iD3 Spectrophotometer
 
 ### written by Danielle Barnas
 created: 9/26/2019  
-edited: 9/2/2020
+edited: 5/17/2022
 
-## Measuring pH using m-Cresol purple dye
 
 **Contents**  
 - [Initial setup](#Initial_setup)  
