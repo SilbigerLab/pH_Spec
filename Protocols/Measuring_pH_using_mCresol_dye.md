@@ -113,13 +113,14 @@ edited: 5/17/2022
 
 <a name=Exporting_data></a> **Exporting Data**  
 
+1. Create a dated folder for your readings in a folder with your name.
 1. From the Home screen, select Export in the Template Tools section of the upper menu.  This exported file contains the well ID's you provided in your plate map prior to your read.  Change "Save as Type" to .xls
-    1. Save your templates using the following as a guideline: (name)_(date)_Template.xls
+    1. Save your templates in your dated folder using the following as a guideline: (name)_(date)_Template.xls
 1. To export your plate read values, click on the "File" tab which is depicted by an encirculed well plate icon in the upper lefthand corner of the program screen to reveal a dropdown menu.
 1. Select Export, then click export to XML XLS TXT.
 1. In the export options window, select each plate you want to export (Tris1, Tris2, Plate1, Plate2); select to export just the raw data. 
 1. In Output Format, select Plate (.txt or .xls).  Change "Save as Type" to .xls
-1. Save your plates using the following as a guideline: (name)_(date)_Plate.xls
+1. Save your plates in your dated folder using the following as a guideline: (name)_(date)_Plate.xls
     1. Files are exported as .xls files, so once saved, you will need to open the file and save as a .csv to access in R.
 
 
