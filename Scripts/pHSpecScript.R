@@ -32,12 +32,13 @@ TempInSituFileName<-'TrisTempInSitu.csv' #file name of the in situ temperatures.
 # Change slope and intercept with each new batch of dye --------------
 # Dye created by: Jenn Fields
 # Date created: 7-08-2022
-dye_intercept<-14.504
-dye_slope<--0.5663
+#dye_intercept<-14.504
+#dye_slope<--0.5663
+
 # Second Dye created by Deme Panos
 # Use the following intercept and slope for Moorea spec runs
-# dye_intercept<-14.653
-# dye_slope<--0.5694
+dye_intercept<-14.653
+dye_slope<--0.5694
 
 # DONT CHANGE ANYTHING BELOW HERE ----------------------------------
 
