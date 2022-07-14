@@ -14,10 +14,10 @@ library(tidyverse)
 
 
 ## File names -------------------
-foldername<-'m-cresol/20220708_Fields' # folder of the day
-filename<-'Tris_Plate.csv' # data
-sampleID<-'Tris_Template.csv' # template of sample IDs
-platename<-'TrisTest' # this will be the name of your file
+foldername<-'Dellinger' # folder of the day
+filename<-'Dellinger_07142022_Plate.csv' # data
+sampleID<-'Dellinger_07142022_TemplateTris.csv' # template of sample IDs
+platename<-'Dellinger_07142022_TestRun' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
