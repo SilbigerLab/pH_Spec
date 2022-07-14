@@ -108,8 +108,8 @@ edited: 7/17/2022
 1. After samples have been run and the plate is ejected, remove the plate and once again place on kim wipes or a soft surface.
 1. Use a 10uL pipette to add **5uL** of m-Cresol purple dye to each sample well.
 1. Place the plate back in the spec, and click "Open/Close".
-1. Once the samples have run through with the dye and the plate is ejected, remove the plate, click "Open/Close" to finish the workflow, and export your data.4af
-1. Export Tris Template and Plate data using below protocol and run [pHSpecScript](https://github.com/SilbigerLab/pH_Spec/blob/master/Scripts/pHSpecScript.R) code to ensure Tris/m-cresol accuracy **before** running your samples
+1. Once the samples have run through with the dye and the plate is ejected, remove the plate, click "Open/Close" to finish the workflow, and export your data.
+1. Export Tris Template and Plate data using below protocol and run [pHSpecScript](https://github.com/SilbigerLab/pH_Spec/blob/master/Scripts/pHSpecScript.R) code and check output from the code to ensure Tris/m-cresol accuracy **before** running your samples
 
 
 <a name=Exporting_data></a> **Exporting Data**  
