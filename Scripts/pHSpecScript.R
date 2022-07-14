@@ -9,30 +9,31 @@
 ## create a folder for your day of sampling (foldername below) and put your plate.csv files in there. All your data will be exported to that folder
 
 #libraries
-library(tidyverse)
 library(seacarb)
+library(tidyverse)
+
 
 ## File names -------------------
-foldername<-'HOBO_MX2501/spec_data/20200303' # folder of the day
-filename<-'Tris_Plate28.csv' # data
+foldername<-'m-cresol/20220708_Fields' # folder of the day
+filename<-'Tris_Plate.csv' # data
 sampleID<-'Tris_Template.csv' # template of sample IDs
-platename<-'Tris28' # this will be the name of your file
+platename<-'TrisTest' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
-Temperature<-28.5
+Temperature<-25.0
 Salinity<-34 # note if you have a range of salinities then import a file with all salinities and modify script below (add a column with sample IDs and left_join with AllData Df)
 
 ### Temperature in situ (either in the aquarium or in the field)#####
 ## If you want to calculate insitu pH then enter TRUE in the statement below and the filename with the temperature files, if not enter FALSE
-CalculateInSitu<-TRUE
+CalculateInSitu<-FALSE
 TempInSituFileName<-'TrisTempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
 
 # Change slope and intercept with each new batch of dye --------------
-# Dye created by: Deme Panos
-# Date created: 1-20-20
-dye_intercept<-17.228
-dye_slope<--0.5959
+# Dye created by: Jenn Fields
+# Date created: 7-08-2022
+dye_intercept<-14.504
+dye_slope<--0.5663
 # Second Dye created by Deme Panos
 # Use the following intercept and slope for Moorea spec runs
 # dye_intercept<-14.653
