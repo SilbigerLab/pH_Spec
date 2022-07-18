@@ -14,10 +14,10 @@ library(tidyverse)
 
 
 ## File names -------------------
-foldername<-'Dellinger' # folder of the day
-filename<-'Dellinger_07142022_Plate.csv' # data
-sampleID<-'Dellinger_07142022_TemplateTris.csv' # template of sample IDs
-platename<-'Dellinger_07142022_TestRun' # this will be the name of your file
+foldername<-'m-cresol/20220708_Fields' # folder of the day
+filename<-'Tris_Plate.csv' # data
+sampleID<-'Tris_Template.csv' # template of sample IDs
+platename<-'mcresoltest2' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
@@ -32,13 +32,13 @@ TempInSituFileName<-'TrisTempInSitu.csv' #file name of the in situ temperatures.
 # Change slope and intercept with each new batch of dye --------------
 # Dye created by: Jenn Fields
 # Date created: 7-08-2022
-#dye_intercept<-14.504
-#dye_slope<--0.5663
+dye_intercept<-14.504
+dye_slope<--0.5663
 
 # Second Dye created by Deme Panos
 # Use the following intercept and slope for Moorea spec runs
-dye_intercept<-14.653
-dye_slope<--0.5694
+#dye_intercept<-14.653
+#dye_slope<--0.5694
 
 # DONT CHANGE ANYTHING BELOW HERE ----------------------------------
 
