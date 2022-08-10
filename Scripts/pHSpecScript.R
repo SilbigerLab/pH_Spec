@@ -15,9 +15,9 @@ library(tidyverse)
 
 ## File names -------------------
 foldername<-'m-cresol/20220810_Fields' # folder of the day
-filename<-'mcresol_plate.csv' # data
-sampleID<-'mcresol_template.csv' # template of sample IDs
-platename<-'mcresoltests' # this will be the name of your file
+filename<-'mcresolplate2.csv' # data
+sampleID<-'mcresol_template2.csv' # template of sample IDs
+platename<-'mcresoltests2' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
