@@ -14,10 +14,10 @@ library(tidyverse)
 
 
 ## File names -------------------
-foldername<-'m-cresol/20220708_Fields' # folder of the day
-filename<-'Tris_Plate.csv' # data
-sampleID<-'Tris_Template.csv' # template of sample IDs
-platename<-'mcresoltest2' # this will be the name of your file
+foldername<-'m-cresol/20220810_Fields' # folder of the day
+filename<-'mcresol_plate.csv' # data
+sampleID<-'mcresol_template.csv' # template of sample IDs
+platename<-'mcresoltests' # this will be the name of your file
 
 ## Temp and Salinity ----------
 #Temeperataure pH was run at IN THE LAB
@@ -27,13 +27,20 @@ Salinity<-34 # note if you have a range of salinities then import a file with al
 ### Temperature in situ (either in the aquarium or in the field)#####
 ## If you want to calculate insitu pH then enter TRUE in the statement below and the filename with the temperature files, if not enter FALSE
 CalculateInSitu<-FALSE
-TempInSituFileName<-'TrisTempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
+TempInSituFileName<-'TempInSitu.csv' #file name of the in situ temperatures. (enter the sample IDs identical to the pH sample ID template)  
 
 # Change slope and intercept with each new batch of dye --------------
 # Dye created by: Jenn Fields
 # Date created: 7-08-2022
 dye_intercept<-14.504
 dye_slope<--0.5663
+
+# Change slope and intercept with each new batch of dye --------------
+# Dye created by: Jenn Fields
+# Slope recreated by Robert Dellinger
+# Date created: 8-09-2022
+#dye_intercept<-18.825
+#dye_slope<--0.581
 
 # Second Dye created by Deme Panos
 # Use the following intercept and slope for Moorea spec runs
@@ -119,7 +126,7 @@ pHData<-AllData %>%
          daterun = Sys.Date()) %>%
   left_join(sampleIDNames)%>% # join with the sampleIDs
   left_join(TempInSitu) %>% # join with the temperature data
-  drop_na() # remove the empty wells
+  drop_na(!TempInSitu) # remove the empty wells
 
 # run this block if calculating in situ pH
   if(CalculateInSitu==TRUE){
