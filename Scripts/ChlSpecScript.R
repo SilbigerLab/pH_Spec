@@ -13,11 +13,11 @@ library(tidyverse)
 
 
 ## File names -------------------
-foldername<-'test_chl' # folder of the day
-filename<-'testchl2.csv' # data
-sampleID<-'Chl_template_test.csv' # template of sample IDs
-platename<-'plate1_test' # this will be the name of your file
-metadata_file<-"testchl2_metadata.csv" # file with slurry vols and SA
+foldername<-'chl_oki2025' # folder of the day
+filename<-'Plate3_Chla_15.13_08.12.2025.csv' # data
+sampleID<-'Chl_template_plate3.csv' # template of sample IDs
+platename<-'plate3_chl_oki2025' # this will be the name of your file
+metadata_file<-"Chl_metadata_plate3.csv" # file with slurry vols and SA
 
 ## What is the path length?
 PL<-0.71 # pathlength for donahue lab plate
